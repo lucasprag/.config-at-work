@@ -1,0 +1,5 @@
+# Theme: match VS Code "GitHub Dark Default"
+theme = GitHub Dark Default
+
+# Override background to near-black (theme default is #0d1117)
+background = #060608
