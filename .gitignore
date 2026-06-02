@@ -1,28 +1,29 @@
-tmuxinator/tmuxinator.zsh
+# Allowlist model: ignore everything in the repo root by default, then
+# explicitly re-include the configs we track. Anything new that lands in
+# ~/.config (new apps, caches, tokens) is ignored automatically -- no more
+# chasing it with per-app ignore lines.
+#
+# To start tracking something new:
+#   - add a `!/name` line below, or
+#   - run `git add -f <path>`
 
-fish/fish_variables
+/*
 
-.bundle
+# --- tracked configs (explicitly re-included) ---
+!/.github/
+!/.gitignore
+!/LICENSE
+!/README.md
+!/alacritty/
+!/cmux/
+!/ghostty/
+!/hammerspoon/
+!/nvim/
+!/omf/
+!/tmuxinator/
+!/zsh-abbr/
+!/tmux.conf
+!/zshrc
 
-btop/
-configstore/
-filezilla/
-fish/functions/h2.fish
-github-copilot/
-htop/
-
-# secrets / machine state -- never commit (this is a public repo)
-gh/
-op/
-cmux/
-cagent/
-.secret.zsh
-.secret.fish
-
-shopify/
-stripe/
-wireshark/
-yarn/
-zed/
-iterm2/
-kitty/
+# --- noise to keep out even inside tracked dirs ---
+/tmuxinator/tmuxinator.zsh
