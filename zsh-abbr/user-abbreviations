@@ -10,7 +10,7 @@ abbr "n"="nvim"
 abbr "e"="ember"
 abbr "fn"="fzf | xargs nvim"
 abbr "r"="exec zsh"
-abbr "mux"="tmuxinator"
+abbr "ms"="start smile"
 abbr "a"="arch -arm64"
 
 # directory jumps
