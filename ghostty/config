@@ -1,3 +1,6 @@
+# Use zsh for new terminals (overrides inherited $SHELL; cmux reads this too)
+command = /bin/zsh
+
 # Theme: match VS Code "GitHub Dark Default"
 theme = GitHub Dark Default
 
