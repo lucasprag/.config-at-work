@@ -1,0 +1,58 @@
+# zsh-abbr user abbreviations -- ported from fish config.fish
+# Format: abbr "name"="value"   (lines not starting with `abbr` are ignored)
+
+# docker / editors / misc tools
+abbr "compose"="docker compose"
+abbr "cup"="docker compose up -d"
+abbr "cs"="docker compose stop"
+abbr "c"="code"
+abbr "n"="nvim"
+abbr "e"="ember"
+abbr "fn"="fzf | xargs nvim"
+abbr "r"="exec zsh"
+abbr "mux"="tmuxinator"
+abbr "a"="arch -arm64"
+
+# directory jumps
+abbr "dotfiles"="cd ~/.config"
+abbr "simpleblack"="cd ~/.config/nvim/plugged/simpleblack"
+abbr "labs"="cd ~/Projects/labs"
+abbr "blog"="cd ~/Projects/lucasprag"
+abbr "ipb"="cd ~/Projects/ipbpedronunes"
+abbr "smile"="cd ~/Projects/smile"
+abbr "core"="cd ~/Projects/smile/smile-core"
+abbr "internal"="cd ~/Projects/smile/smile-internal"
+abbr "admin"="cd ~/Projects/smile/smile-admin"
+abbr "rfcs"="cd ~/Projects/smile/rfcs"
+abbr "UI"="cd ~/Projects/smile/smile-ui"
+
+# ruby / elixir
+abbr "bi"="bundle install"
+abbr "be"="bundle exec"
+abbr "pc"="iex -S mix phx.server"
+
+# git
+abbr "gss"="git status -s"
+abbr "gco"="git checkout"
+abbr "gc"="git commit"
+abbr "gb"="git branch"
+abbr "ga"="git add"
+abbr "gd"="git diff"
+abbr "gl"="git lg"
+abbr "gu"="git status -s | grep UU"
+abbr "gr"="git remote -v"
+abbr "gk"="git cherry-pick"
+abbr "gf"="git fetch"
+abbr "gU"="git reset --soft HEAD~"
+abbr "grmu"="git status -s | awk '{ print \$2 }' | xargs rm"
+abbr "gp"="git pull origin \$(git_current_branch)"
+abbr "gP"="git push origin \$(git_current_branch)"
+
+# misc
+abbr "https"="http --default-scheme=https"
+abbr "weather"="curl wttr.in"
+abbr "clima"="curl wttr.in"
+abbr "bro"="echo igso-on | pbcopy"
+abbr "wat"="echo '¯\_(ツ)_/¯' | pbcopy"
+abbr "hein"="echo ❨╯°□°❩╯︵┻━┻ | pbcopy"
+abbr "shit"="echo ┻━┻︵ \(°□°)/ ︵ ┻━┻ | pbcopy"

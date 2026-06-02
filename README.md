@@ -4,8 +4,10 @@ My personal dot files.
 
 ## Dependencies
 
-- [fish](https://fishshell.com/)
-- [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)
+- [zsh](https://www.zsh.org/) with [oh-my-zsh](https://ohmyz.sh/)
+- [zsh-abbr](https://github.com/olets/zsh-abbr) (fish-style abbreviations)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [Powerline fonts](https://github.com/powerline/fonts)
 - [asdf](https://github.com/asdf-vm/asdf), [asdf-ruby](https://github.com/asdf-vm/asdf-ruby), [asdf-elixir](https://github.com/asdf-vm/asdf-elixir), [asdf-nodejs](https://github.com/asdf-vm/asdf-nodejs), [asdf-erlang](https://github.com/asdf-vm/asdf-erlang), [asdf-python](https://github.com/asdf-community/asdf-python).
 - [tmux](https://github.com/tmux/tmux/wiki)
@@ -25,6 +27,15 @@ My personal dot files.
 
 ```
 git clone git@github.com:lucasprag/.config.git ~/.config
+
+# zsh + oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+brew install zsh-autosuggestions zsh-syntax-highlighting
+brew install olets/tap/zsh-abbr   # or: git clone https://github.com/olets/zsh-abbr ~/.oh-my-zsh/custom/plugins/zsh-abbr (--recurse-submodules)
+ln -sf ~/.config/zshrc ~/.zshrc
+# abbreviations are auto-loaded from ~/.config/zsh-abbr/user-abbreviations
+# secrets (DD/Metabase/Slack tokens etc.) live in ~/.secret.zsh -- NOT committed
+chsh -s /bin/zsh
 
 # tmux
 brew install tmux

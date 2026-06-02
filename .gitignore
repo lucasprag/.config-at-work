@@ -10,6 +10,15 @@ filezilla/
 fish/functions/h2.fish
 github-copilot/
 htop/
+
+# secrets / machine state -- never commit (this is a public repo)
+gh/
+op/
+cmux/
+cagent/
+.secret.zsh
+.secret.fish
+
 shopify/
 stripe/
 wireshark/
