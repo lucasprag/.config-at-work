@@ -10,13 +10,12 @@ My personal dot files.
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [Powerline fonts](https://github.com/powerline/fonts)
 - [asdf](https://github.com/asdf-vm/asdf), [asdf-ruby](https://github.com/asdf-vm/asdf-ruby), [asdf-elixir](https://github.com/asdf-vm/asdf-elixir), [asdf-nodejs](https://github.com/asdf-vm/asdf-nodejs), [asdf-erlang](https://github.com/asdf-vm/asdf-erlang), [asdf-python](https://github.com/asdf-community/asdf-python).
-- [tmux](https://github.com/tmux/tmux/wiki)
-- [tmuxinator](https://github.com/tmuxinator/tmuxinator)
+- [Ghostty](https://ghostty.org/)
+- [cmux](https://www.cmux.dev/) (terminal/workspace manager built on Ghostty)
 - [neovim](https://neovim.io)
 - [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#using-homebrew)
 
 ## MacOS apps
-- [Alacritty](https://github.com/jwilm/alacritty)
 - [Hammerspoon](https://www.hammerspoon.org/)
 - [KeepingYouAwake](https://keepingyouawake.app/)
 - [Clipy](https://github.com/Clipy/Clipy)
@@ -37,17 +36,10 @@ ln -sf ~/.config/zshrc ~/.zshrc
 # secrets (DD/Metabase/Slack tokens etc.) live in ~/.secret.zsh -- NOT committed
 chsh -s /bin/zsh
 
-# tmux
-brew install tmux
-ln -sf ~/.config/tmux.conf ~/.tmux.conf
-
-# install tmux plugins
-mkdir -p ~/.tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-# ctrl+b + I to install plugins
-
-# tmuxinator
-ln -sf ~/.config/tmuxinator ~/.tmuxinator
+# terminal: ghostty + cmux
+# configs are read directly from ~/.config/ghostty and ~/.config/cmux -- no symlink needed
+brew install --cask ghostty cmux
+# `start smile` (in zshrc) opens the smile workspaces via the cmux CLI
 
 # neovim
 brew install neovim

@@ -65,7 +65,7 @@ fi
 # Shopify Hydrogen -> local project bin
 alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 
-# --- cmux workspace launcher (replaces tmuxinator `mux <project>`) ---
+# --- cmux workspace launcher: `start <project>` ---
 # Each `cmux workspace create` is one project context; --command auto-starts
 # its dev server. Adjust the per-project commands below as your setup changes.
 start() {

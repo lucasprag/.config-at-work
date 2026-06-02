@@ -14,16 +14,10 @@
 !/.gitignore
 !/LICENSE
 !/README.md
-!/alacritty/
 !/cmux/
 !/ghostty/
 !/hammerspoon/
 !/nvim/
 !/omf/
-!/tmuxinator/
 !/zsh-abbr/
-!/tmux.conf
 !/zshrc
-
-# --- noise to keep out even inside tracked dirs ---
-/tmuxinator/tmuxinator.zsh

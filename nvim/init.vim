@@ -44,9 +44,6 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' } " add syntax highlighting to co
 " > git
 Plug 'rhysd/committia.vim' " more pleasant editing on commit message
 
-" > tmux
-Plug 'christoomey/vim-tmux-navigator' " transparent navigator
-
 " > misc
 Plug 'pbrisbin/vim-mkdir' " to create files without creating dirs previously (aka mkdir -p)
 Plug 'tpope/vim-sensible' " better defaults
@@ -143,9 +140,6 @@ autocmd! FileType which_key set laststatus=0 noshowmode noruler
 autocmd! FileType fzf
 autocmd! FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-" set syntax/filetype tmux for tmux.conf files (no dot)
-autocmd BufNewFile,BufRead tmux.conf set syntax=tmux filetype=tmux
 
 " reload vim configuration (aka vimrc)
 " :e reloads buffer to trigger the FileType event, useful if you don't want to put files into ftplugin
@@ -480,15 +474,6 @@ map <Right> :echo "use l instead (hjkl)"<CR>
 map <Up>    :echo "use k instead (hjkl)"<CR>
 map <Down>  :echo "use j instead (hjkl)"<CR>
 
-
-" use Alt + hjkl instead of Ctrl + hjkl
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <M-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <M-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <M-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <M-\> :TmuxNavigatePrevious<cr>
-nnoremap <silent> <M-l> :TmuxNavigateRight<cr>
 
 " use Ctrl + hj to move lines
 let g:move_key_modifier = 'C'

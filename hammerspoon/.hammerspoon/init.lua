@@ -197,7 +197,7 @@ appmode:bind({}, "B", function() hs.application.launchOrFocus("Google Chrome") a
 appmode:bind({}, "C", function() hs.application.launchOrFocus("Calendar") appmode:exit() end)
 appmode:bind({}, "D", function() hs.application.launchOrFocus("Postico") appmode:exit() end)
 appmode:bind({}, "S", function() hs.application.launchOrFocus("Slack") appmode:exit() end)
-appmode:bind({}, "T", function() hs.application.launchOrFocus("Alacritty") appmode:exit() end)
+appmode:bind({}, "T", function() hs.application.launchOrFocus("cmux") appmode:exit() end)
 
 
 -- -----------------------
