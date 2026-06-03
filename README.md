@@ -2,16 +2,19 @@
 
 My personal dot files.
 
-## What's in here
+## What this sets up
 
-| Path | Purpose |
-|------|---------|
-| `zshrc` | zsh config (symlinked to `~/.zshrc`) |
-| `zsh-abbr/user-abbreviations` | fish-style abbreviations, auto-loaded by zsh-abbr |
-| `cmux/` | [cmux](https://www.cmux.dev/) settings (terminal/workspace manager) |
-| `ghostty/` | terminal config for cmux's bundled Ghostty engine |
-| `nvim/` | Neovim config (see `nvim/README.md`) |
-| `hammerspoon/` | Hammerspoon hotkeys (app launcher, window management) |
+My day-to-day development environment on macOS:
+
+- **Shell** -- zsh with oh-my-zsh, fish-style abbreviations (zsh-abbr),
+  autosuggestions, and syntax highlighting (`zshrc`, `zsh-abbr/`)
+- **Terminal & workspaces** -- [cmux](https://www.cmux.dev/) with its bundled
+  Ghostty engine: per-project workspaces, panes, and the `start smile`
+  launcher (`cmux/`, `ghostty/`)
+- **Editor** -- Neovim, mostly for small edits and commit messages (`nvim/`)
+- **macOS hotkeys** -- Hammerspoon for app launching and window management
+  (`hammerspoon/`)
+- **Language runtimes** -- asdf-managed Ruby, Node.js, and Python
 
 ## Install
 
