@@ -1,10 +1,8 @@
 return {
-  -- fzf binary, still managed here so the shell keeps ~/.fzf integration
-  { "junegunn/fzf", build = "./install --all" },
-
+  -- uses the fzf binary from homebrew; the nvim config deliberately does not
+  -- manage fzf itself (junegunn/fzf's install script rewrites shell config)
   {
     "ibhagwan/fzf-lua",
-    dependencies = { "junegunn/fzf" },
     cmd = "FzfLua",
     keys = {
       { "<C-p>", "<cmd>FzfLua files<cr>", desc = "files" },
