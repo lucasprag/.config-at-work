@@ -109,5 +109,9 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # --- secrets (never committed -- see ~/.secret.zsh) ---
 [[ -f ~/.secret.zsh ]] && source ~/.secret.zsh
 
+# --- cursor: ZLE resets cursor on init; reassert blinking block (\e[1 q) ---
+zle-line-init() { echo -ne '\e[1 q' }
+zle -N zle-line-init
+
 # --- syntax highlighting MUST be sourced last ---
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
