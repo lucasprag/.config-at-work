@@ -35,7 +35,11 @@
       "splitRight" : "cmd+\\",
       "splitDown" : "cmd+-",
       "browserZoomOut" : "cmd+shift+-",
-      "markdownZoomOut" : "cmd+shift+-"
+      "markdownZoomOut" : "cmd+shift+-",
+      "focusLeft" : "ctrl+opt+h",
+      "focusDown" : "ctrl+opt+j",
+      "focusUp" : "ctrl+opt+k",
+      "focusRight" : "ctrl+opt+l"
     }
   },
 
