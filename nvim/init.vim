@@ -475,6 +475,21 @@ map <Up>    :echo "use k instead (hjkl)"<CR>
 map <Down>  :echo "use j instead (hjkl)"<CR>
 
 
+" navigate splits with Alt + hjkl; at the edge, hop to the next cmux pane
+" (vim-tmux-navigator style -- see bin/cmux-navigate)
+function! s:NavigateSplitOrCmuxPane(dir)
+  let l:prev = winnr()
+  execute 'wincmd ' . a:dir
+  if winnr() == l:prev
+    call system('cmux-navigate ' . a:dir)
+  endif
+endfunction
+
+nnoremap <silent> <M-h> :call <SID>NavigateSplitOrCmuxPane('h')<CR>
+nnoremap <silent> <M-j> :call <SID>NavigateSplitOrCmuxPane('j')<CR>
+nnoremap <silent> <M-k> :call <SID>NavigateSplitOrCmuxPane('k')<CR>
+nnoremap <silent> <M-l> :call <SID>NavigateSplitOrCmuxPane('l')<CR>
+
 " use Ctrl + hj to move lines
 let g:move_key_modifier = 'C'
 
