@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+"""Directional pane focus for cmux: cmux-navigate <h|j|k|l>
+
+vim-tmux-navigator style: called from zsh widgets and nvim mappings when
+Alt+h/j/k/l should move focus to the adjacent cmux pane. No-op when there
+is no pane in that direction or when run outside a cmux terminal.
+"""
+import json
+import os
+import subprocess
+import sys
+
+EPS = 2  # px tolerance when comparing pane edges
+
+
+def overlap(a_start, a_len, b_start, b_len):
+    return min(a_start + a_len, b_start + b_len) - max(a_start, b_start)
+
+
+def main():
+    if len(sys.argv) != 2 or sys.argv[1] not in ("h", "j", "k", "l"):
+        print(__doc__.splitlines()[0], file=sys.stderr)
+        return 2
+
+    direction = sys.argv[1]
+    workspace = os.environ.get("CMUX_WORKSPACE_ID")
+    if not workspace:
+        return 0  # not inside cmux -- silently do nothing
+
+    out = subprocess.run(
+        ["cmux", "rpc", "pane.list", json.dumps({"workspace": workspace})],
+        capture_output=True, text=True,
+    )
+    if out.returncode != 0:
+        return 0
+    panes = json.loads(out.stdout)["panes"]
+    cur = next((p for p in panes if p.get("focused")), None)
+    if cur is None or len(panes) < 2:
+        return 0
+
+    cf = cur["pixel_frame"]
+    best, best_dist = None, None
+    for p in panes:
+        if p["id"] == cur["id"]:
+            continue
+        f = p["pixel_frame"]
+        if direction == "h":
+            ok = f["x"] + f["width"] <= cf["x"] + EPS
+            dist = cf["x"] - (f["x"] + f["width"])
+            lap = overlap(cf["y"], cf["height"], f["y"], f["height"])
+        elif direction == "l":
+            ok = f["x"] >= cf["x"] + cf["width"] - EPS
+            dist = f["x"] - (cf["x"] + cf["width"])
+            lap = overlap(cf["y"], cf["height"], f["y"], f["height"])
+        elif direction == "k":
+            ok = f["y"] + f["height"] <= cf["y"] + EPS
+            dist = cf["y"] - (f["y"] + f["height"])
+            lap = overlap(cf["x"], cf["width"], f["x"], f["width"])
+        else:  # j
+            ok = f["y"] >= cf["y"] + cf["height"] - EPS
+            dist = f["y"] - (cf["y"] + cf["height"])
+            lap = overlap(cf["x"], cf["width"], f["x"], f["width"])
+        if not ok or lap <= 0:
+            continue
+        if best is None or dist < best_dist:
+            best, best_dist = p, dist
+
+    if best is not None:
+        subprocess.run(
+            ["cmux", "focus-pane", "--pane", best["ref"]],
+            capture_output=True, text=True,
+        )
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

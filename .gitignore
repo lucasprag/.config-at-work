@@ -14,9 +14,13 @@
 !/.gitignore
 !/LICENSE
 !/README.md
+!/bin/
 !/cmux/
 !/ghostty/
 !/hammerspoon/
 !/nvim/
 !/zsh-abbr/
 !/zshrc
+
+# --- noise to keep out even inside tracked dirs ---
+/bin/__pycache__/
