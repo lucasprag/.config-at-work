@@ -31,7 +31,15 @@
       "nextSurface" : "cmd+opt+l",
       "prevSurface" : "cmd+opt+h",
       "nextSidebarTab" : "cmd+opt+j",
-      "prevSidebarTab" : "cmd+opt+k"
+      "prevSidebarTab" : "cmd+opt+k",
+      "focusLeft" : "opt+h",
+      "focusDown" : "opt+j",
+      "focusUp" : "opt+k",
+      "focusRight" : "opt+l",
+      "splitRight" : "cmd+\\",
+      "splitDown" : "cmd+-",
+      "browserZoomOut" : "cmd+shift+-",
+      "markdownZoomOut" : "cmd+shift+-"
     }
   },
 
