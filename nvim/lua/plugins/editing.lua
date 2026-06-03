@@ -1,27 +1,25 @@
 return {
-  -- makes a map to easy move the cursor (replaced by flash.nvim in stage 3)
+  -- label-based jumps; also adds labels to native f/F/t/T (char mode)
   {
-    "easymotion/vim-easymotion",
-    init = function()
-      vim.g.EasyMotion_do_mapping = 0 -- disable default mappings
-    end,
-    config = function()
-      vim.keymap.set("", "f", "<Plug>(easymotion-lineforward)")
-      vim.keymap.set("", "F", "<Plug>(easymotion-linebackward)")
-    end,
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {
+      modes = {
+        char = { jump_labels = true }, -- f/F/t/T get jump labels, same keys as before
+      },
+    },
   },
 
   -- multiple cursors using C-n when selecting a word
   { "terryma/vim-multiple-cursors" },
 
-  -- comment code (replaced by Comment.nvim in stage 3)
+  -- comment code (treesitter-aware)
   {
-    "scrooloose/nerdcommenter",
-    init = function()
-      vim.g.NERDCreateDefaultMappings = 0 -- just need the toggle
-      vim.g.NERDDefaultAlign = "left"     -- delimiters flush left
-      vim.g.NERDCommentEmptyLines = 0
-    end,
+    "numToStr/Comment.nvim",
+    opts = {
+      padding = true,
+      ignore = "^$", -- don't comment empty lines
+    },
   },
 
   -- :Bdelete to close all, others or hidden buffers

@@ -14,47 +14,45 @@ return {
   -- automatically highlight other uses of the word under the cursor
   { "RRethy/vim-illuminate" },
 
-  -- really light and fast status line (replaced by lualine in stage 3)
+  -- status line
   {
-    "itchyny/lightline.vim",
-    init = function()
-      -- filename relative to the repo root when inside one
-      vim.cmd([[
-        function! LightlineFilename()
-          let root = fnamemodify(get(b:, 'git_dir'), ':h')
-          let path = expand('%:p')
-          if path[:len(root)-1] ==# root
-            return path[len(root)+1:]
-          endif
-          return expand('%')
-        endfunction
-      ]])
-      vim.g.lightline = {
-        colorscheme = "ayu_dark",
-        active = {
-          left = { { "mode", "paste" }, { "filename" } },
-          right = { { "lineinfo" }, { "filetype" }, { "readonly", "modified" } },
-        },
-        inactive = {
-          left = { { "filename" } },
-          right = { { "lineinfo" }, { "filetype" } },
-        },
-        component_type = { readonly = "error" },
-        component_function = { filename = "LightlineFilename" },
-      }
-    end,
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      options = {
+        theme = "ayu_dark",
+        icons_enabled = false,
+        component_separators = "",
+        section_separators = "",
+      },
+      sections = {
+        -- mode/filename | filetype/lineinfo; filename's built-in [+]/[-]
+        -- markers cover lightline's readonly/modified components
+        lualine_a = { "mode" },
+        lualine_b = {},
+        lualine_c = { { "filename", path = 1 } }, -- relative path, like LightlineFilename
+        lualine_x = { "filetype" },
+        lualine_y = {},
+        lualine_z = { "location" },
+      },
+      inactive_sections = {
+        lualine_c = { { "filename", path = 1 } },
+        lualine_x = { "location", "filetype" },
+      },
+    },
   },
 
-  -- filesystem tree (replaced by nvim-tree in stage 3)
+  -- filesystem tree
   {
-    "scrooloose/nerdtree",
-    cmd = { "NERDTreeToggle", "NERDTreeFind" },
-    init = function()
-      vim.g.NERDTreeDirArrows = 1
-      vim.g.NERDTreeMinimalUI = 1
-      vim.g.NERDTreeShowLineNumbers = 0
-      vim.g.NERDTreeWinSize = 40
-    end,
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+    opts = {
+      view = { width = 40, number = false },
+      renderer = {
+        icons = {
+          show = { file = false, folder = false, folder_arrow = true, git = false },
+        },
+      },
+    },
   },
 
   -- shows keybindings in a popup when you press <leader>
@@ -67,7 +65,7 @@ return {
       wk.add({
         { "<leader>b", group = "buffers" },
         { "<leader>ba", "<cmd>Bdelete all<cr>", desc = "close all" },
-        { "<leader>bb", "<cmd>Buffers<cr>", desc = "buffers" },
+        { "<leader>bb", "<cmd>FzfLua buffers<cr>", desc = "buffers" },
         { "<leader>bd", "<cmd>BD<cr>", desc = "close" },
         { "<leader>bo", "<cmd>Bdelete hidden<cr>", desc = "close others" },
         { "<leader>bw", "<cmd>bd<cr>", desc = "close window and buffer" },
@@ -75,39 +73,36 @@ return {
         { "<leader>bn", "<cmd>BF<cr>", desc = "next" },
 
         { "<leader>c", group = "code" },
-        { "<leader>cc", "<Plug>NERDCommenterToggle", desc = "comment", mode = { "n", "v" } },
+        { "<leader>cc", "<Plug>(comment_toggle_linewise_current)", desc = "comment", mode = "n" },
+        { "<leader>cc", "<Plug>(comment_toggle_linewise_visual)", desc = "comment", mode = "v" },
         { "<leader>c<space>", "<cmd>RemoveTrailingSpaces<cr>", desc = "remove trailing spaces" },
         { "<leader>cp", "<cmd>RemoveDebuggers<cr>", desc = "remove debuggers" },
-        { "<leader>ct", "<cmd>Filetypes<cr>", desc = "change file type" },
+        { "<leader>ct", "<cmd>FzfLua filetypes<cr>", desc = "change file type" },
 
         { "<leader>f", group = "file" },
         { "<leader>ff", "<cmd>CopyFullPath<cr>", desc = "copy full path" },
         { "<leader>fn", "<cmd>CopyFileName<cr>", desc = "copy file name" },
         { "<leader>fr", "<cmd>CopyRelativePath<cr>", desc = "copy relative path" },
-        { "<leader>fm", "<cmd>Marks<cr>", desc = "marks" },
+        { "<leader>fm", "<cmd>FzfLua marks<cr>", desc = "marks" },
 
         { "<leader>g", group = "git" },
-        { "<leader>gs", "<cmd>GFiles?<cr>", desc = "status" },
+        { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "status" },
 
         { "<leader>j", group = "jump" },
-        { "<leader>jl", "<Plug>(easymotion-lineforward)", desc = "forward" },
-        { "<leader>jj", "<Plug>(easymotion-j)", desc = "down" },
-        { "<leader>jk", "<Plug>(easymotion-k)", desc = "up" },
-        { "<leader>jh", "<Plug>(easymotion-linebackward)", desc = "backward" },
-        { "<leader>jf", "<Plug>(easymotion-w)", desc = "forward/down" },
-        { "<leader>jb", "<Plug>(easymotion-b)", desc = "backward/up" },
+        { "<leader>jj", function() require("flash").jump() end, desc = "jump anywhere", mode = { "n", "x" } },
+        { "<leader>jt", function() require("flash").treesitter() end, desc = "select node", mode = { "n", "x" } },
 
         { "<leader>p", group = "project" },
-        { "<leader>pf", "<cmd>Files<cr>", desc = "files" },
-        { "<leader>pt", "<cmd>NERDTreeToggle<cr>", desc = "tree" },
-        { "<leader>pl", "<cmd>NERDTreeFind<cr>", desc = "locate on tree" },
+        { "<leader>pf", "<cmd>FzfLua files<cr>", desc = "files" },
+        { "<leader>pt", "<cmd>NvimTreeToggle<cr>", desc = "tree" },
+        { "<leader>pl", "<cmd>NvimTreeFindFile<cr>", desc = "locate on tree" },
 
         { "<leader>s", group = "search" },
-        { "<leader>ss", "<cmd>Rg<cr>", desc = "search" },
+        { "<leader>ss", "<cmd>FzfLua live_grep<cr>", desc = "search" },
         { "<leader>sh", "<cmd>TurnOffSearchHighlight<cr>", desc = "turn off highlight" },
-        { "<leader>sf", "<cmd>Filetypes<cr>", desc = "filetypes" },
-        { "<leader>sr", "<cmd>History<cr>", desc = "recent files" },
-        { "<leader>sw", "<cmd>Windows<cr>", desc = "windows" },
+        { "<leader>sf", "<cmd>FzfLua filetypes<cr>", desc = "filetypes" },
+        { "<leader>sr", "<cmd>FzfLua oldfiles<cr>", desc = "recent files" },
+        { "<leader>sw", "<cmd>FzfLua tabs<cr>", desc = "windows (tabs)" },
 
         { "<leader><Tab>", group = "tabs" },
         { "<leader><Tab>n", "<cmd>tabnew<cr>", desc = "new" },
@@ -116,7 +111,7 @@ return {
         { "<leader><Tab>c", "<cmd>tabclose<cr>", desc = "close" },
 
         { "<leader>T", group = "toggles" },
-        { "<leader>Tc", "<cmd>Colors<cr>", desc = "colorschemes" },
+        { "<leader>Tc", "<cmd>FzfLua colorschemes<cr>", desc = "colorschemes" },
         { "<leader>Tn", "<cmd>ToggleLineNumbers<cr>", desc = "numbers" },
         { "<leader>Tl", "<cmd>ToggleLineNumbers<cr>", desc = "line numbers" },
         { "<leader>Tr", "<cmd>ToggleRelativeLineNumbers<cr>", desc = "relative numbers" },
