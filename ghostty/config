@@ -10,3 +10,6 @@ theme = GitHub Dark Default
 
 # Override background to near-black (theme default is #0d1117)
 background = #060608
+
+# Block cursor (ghostty defaults to beam)
+cursor-style = block
