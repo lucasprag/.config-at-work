@@ -1,6 +1,10 @@
 # Use zsh for new terminals (overrides inherited $SHELL; cmux reads this too)
 command = /bin/zsh
 
+# Left option sends Alt (Esc-prefix) so Alt+h/j/k/l pane navigation works in
+# zsh and nvim (see bin/cmux-navigate); right option still types accents.
+macos-option-as-alt = left
+
 # Theme: match VS Code "GitHub Dark Default"
 theme = GitHub Dark Default
 
