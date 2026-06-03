@@ -213,8 +213,8 @@ filetype indent plugin on
 " break lines automaticaly when the reach the end of the window
 set wrap
 
-" don't show line numbers
-set nonumber
+" show line numbers
+set number
 set norelativenumber
 
 " Show partial commands in the last line of the screen
