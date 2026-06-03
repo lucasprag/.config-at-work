@@ -46,7 +46,6 @@ Plug 'rhysd/committia.vim' " more pleasant editing on commit message
 
 " > misc
 Plug 'pbrisbin/vim-mkdir' " to create files without creating dirs previously (aka mkdir -p)
-Plug 'tpope/vim-sensible' " better defaults
 Plug 'vim-scripts/restore_view.vim' " restoring cursor position and folding
 Plug 'liuchengxu/vim-which-key' " shows keybindings in popup when you press <leader>
 Plug 'tpope/vim-endwise' " helps to end certain structures
