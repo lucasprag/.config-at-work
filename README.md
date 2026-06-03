@@ -12,7 +12,6 @@ My personal dot files.
 | `ghostty/` | terminal config for cmux's bundled Ghostty engine |
 | `nvim/` | Neovim config (see `nvim/README.md`) |
 | `hammerspoon/` | Hammerspoon hotkeys (app launcher, window management) |
-| `omf/` | legacy oh-my-fish theme (kept for reference) |
 
 ## Install
 
