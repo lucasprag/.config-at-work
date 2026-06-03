@@ -7,11 +7,12 @@
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 
-# PATH: homebrew, brew git, ~/.local/bin
+# PATH: homebrew, brew git, ~/.local/bin, repo scripts
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/opt/git/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.config/bin:$PATH"
 
 # libpq (needed to build the pg gem)
 export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
@@ -39,6 +40,17 @@ source $ZSH/oh-my-zsh.sh
 
 # ls -la  (override oh-my-zsh's `l` alias)
 alias l='ls -la'
+
+# Alt+h/j/k/l: move focus between cmux panes from the shell
+# (inside nvim the same keys navigate splits first -- see nvim/init.vim)
+if [[ -n $CMUX_WORKSPACE_ID ]]; then
+  _cmux_nav() { cmux-navigate "${WIDGET##*-}" }
+  for _dir in h j k l; do
+    zle -N cmux-nav-$_dir _cmux_nav
+    bindkey "^[$_dir" cmux-nav-$_dir
+  done
+  unset _dir
+fi
 
 # interactively kill processes with fzf (port of the fish kp)
 kp() {
