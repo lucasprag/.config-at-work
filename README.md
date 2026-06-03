@@ -123,8 +123,8 @@ asdf global python "$PY3" latest:2
 brew install neovim
 ```
 
-Install [Plug](https://github.com/junegunn/vim-plug?tab=readme-ov-file#neovim),
-then follow the instructions in `nvim/README.md`.
+Plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim), which
+installs itself on first launch. Then follow the instructions in `nvim/README.md`.
 
 ### 7. Hammerspoon
 

@@ -10,7 +10,7 @@ This is only used for quick edits and commit messages.
 # Install
 
 - Install [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
-- Install [Plug](https://github.com/junegunn/vim-plug)
+- Install [fzf](https://github.com/junegunn/fzf) (`brew install fzf`)
 - Install [bat](https://github.com/sharkdp/bat#installation) for syntax highlighting when fuzzy finding
+- Open `nvim` ([lazy.nvim](https://github.com/folke/lazy.nvim) bootstraps itself and installs all plugins on first run)
 - run `:checkhealth`
-- run `:PlugInstall`
