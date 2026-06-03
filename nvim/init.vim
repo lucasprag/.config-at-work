@@ -52,9 +52,6 @@ Plug 'liuchengxu/vim-which-key' " shows keybindings in popup when you press <lea
 Plug 'tpope/vim-endwise' " helps to end certain structures
 Plug 'RRethy/vim-illuminate' " automatically highlight other uses of the current word under the cursor
 
-" > style
-Plug 'editorconfig/editorconfig-vim'
-
 " > status line
 Plug 'itchyny/lightline.vim' " really light and fast status line
 
