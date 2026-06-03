@@ -11,14 +11,11 @@ abbr "e"="ember"
 abbr "fn"="fzf | xargs nvim"
 abbr "r"="exec zsh"
 abbr "ms"="start smile"
-abbr "a"="arch -arm64"
 
 # directory jumps
 abbr "dotfiles"="cd ~/.config"
 abbr "simpleblack"="cd ~/.config/nvim/plugged/simpleblack"
 abbr "labs"="cd ~/Projects/labs"
-abbr "blog"="cd ~/Projects/lucasprag"
-abbr "ipb"="cd ~/Projects/ipbpedronunes"
 abbr "smile"="cd ~/Projects/smile"
 abbr "core"="cd ~/Projects/smile/smile-core"
 abbr "internal"="cd ~/Projects/smile/smile-internal"
@@ -26,10 +23,9 @@ abbr "admin"="cd ~/Projects/smile/smile-admin"
 abbr "rfcs"="cd ~/Projects/smile/rfcs"
 abbr "UI"="cd ~/Projects/smile/smile-ui"
 
-# ruby / elixir
+# ruby
 abbr "bi"="bundle install"
 abbr "be"="bundle exec"
-abbr "pc"="iex -S mix phx.server"
 
 # git
 abbr "gss"="git status -s"

@@ -18,9 +18,6 @@ export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
-# webpacker dev server
-export WEBPACKER_DEV_SERVER_HOST=0.0.0.0
-
 # gpg, for signing commits
 export GPG_TTY=$(tty)
 
@@ -60,10 +57,6 @@ else
   source /opt/homebrew/opt/fzf/shell/key-bindings.zsh 2>/dev/null
   source /opt/homebrew/opt/fzf/shell/completion.zsh 2>/dev/null
 fi
-
-# --- aliases ---
-# Shopify Hydrogen -> local project bin
-alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 
 # --- cmux workspace launcher: `start <project>` ---
 # Each `cmux workspace create` is one project context; --command auto-starts
