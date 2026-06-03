@@ -92,6 +92,12 @@ _start_smile() {
   cmux workspace create --name extensions --cwd "$root/smile-shopify-app-extensions"   --focus false
   cmux workspace create --name web       --cwd "$root/smile-core"                      --focus false
   cmux workspace create --name core      --cwd "$root/smile-core"                      --focus true
+  # Close the terminal that ran `start smile` (focus already moved to core above).
+  # If it's the last surface in its workspace, close the whole workspace instead.
+  if [[ -n "${CMUX_SURFACE_ID:-}" ]]; then
+    cmux close-surface --surface "$CMUX_SURFACE_ID" 2>/dev/null \
+      || cmux close-workspace --workspace "$CMUX_WORKSPACE_ID"
+  fi
 }
 
 # --- zsh-abbr: fish-style abbreviations (reads ~/.config/zsh-abbr/user-abbreviations) ---
