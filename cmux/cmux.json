@@ -9,7 +9,8 @@
   // Legacy settings.json files are read only as fallback for keys not present here.
 
   "app" : {
-    "appearance" : "dark"
+    "appearance" : "dark",
+    "reorderOnNotification" : false
   },
 
   "sidebarAppearance" : {
