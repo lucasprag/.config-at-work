@@ -101,7 +101,7 @@ _start_smile() {
 }
 
 # --- zsh-abbr: fish-style abbreviations (reads ~/.config/zsh-abbr/user-abbreviations) ---
-source "$ZSH/custom/plugins/zsh-abbr/zsh-abbr.zsh"
+source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
 
 # --- autosuggestions: gray history hints, right-arrow to accept ---
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
