@@ -1,4 +1,7 @@
-# Use zsh for new terminals (overrides inherited $SHELL; cmux reads this too)
+# Use zsh for new terminals in standalone Ghostty.
+# NOTE: cmux ignores this — it launches the cmux process's inherited $SHELL via
+# its own login wrapper. To control the shell in cmux, set the login shell
+# (chsh) and/or `launchctl setenv SHELL`, then relaunch cmux.
 command = /bin/zsh
 
 # Left option sends Alt (Esc-prefix) so Alt+h/j/k/l pane navigation works in

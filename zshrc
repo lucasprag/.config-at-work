@@ -101,7 +101,13 @@ _start_smile() {
 }
 
 # --- zsh-abbr: fish-style abbreviations (reads ~/.config/zsh-abbr/user-abbreviations) ---
-source /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh
+# Source from whichever path exists: Homebrew (personal machine) or oh-my-zsh custom (work machine).
+for _abbr in \
+  /opt/homebrew/share/zsh-abbr/zsh-abbr.zsh \
+  "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-abbr/zsh-abbr.zsh"; do
+  [[ -r "$_abbr" ]] && { source "$_abbr"; break; }
+done
+unset _abbr
 
 # --- autosuggestions: gray history hints, right-arrow to accept ---
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
