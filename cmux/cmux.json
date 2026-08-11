@@ -44,6 +44,12 @@
     }
   },
 
+  "terminal" : {
+    "showTextBoxOnNewTerminals" : true,
+    "focusTextBoxOnNewTerminals" : false,
+    "textBoxMaxLines" : 10
+  },
+
   //   "app" : {
   //     "appIcon" : "automatic",
   //     "warnBeforeClosingTab" : true,
